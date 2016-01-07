@@ -20,25 +20,20 @@
     <form class="form-signin" action="<%=contextPath%>/login" method="post">
         <h2 class="form-signin-heading">登录</h2>
         <%
-            String error = (String) request.getAttribute(FormAuthenticationFilter.DEFAULT_ERROR_KEY_ATTRIBUTE_NAME);
+            String error = (String) request.getAttribute("error");
             if(error != null){
         %>
         <div class="alert alert-error controls input-large">
             <button class="close" data-dismiss="alert">×</button>
             <%
-                if(error.contains("DisabledAccountException")){
-                    out.print("用户已被屏蔽,请登录其他用户.");
-                }
-                else{
-                    out.print("登录失败，请重试.");
-                }
+                out.print(error);
             %>
         </div>
         <%
             }
         %>
         <label for="inputEmail" class="sr-only">用户名</label>
-        <input type="text" id="inputEmail" name="username" class="form-control" placeholder="loginname" required
+        <input type="text" id="inputEmail" name="loginname" class="form-control" placeholder="loginname" required
                autofocus>
         <label for="inputPassword" class="sr-only">密码</label>
         <input type="password" id="inputPassword" name="password" class="form-control" placeholder="password" required>

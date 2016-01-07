@@ -1,3 +1,4 @@
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: baojun
@@ -13,6 +14,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-登录成功, ${name}
+登录成功, <shiro:principal/>
 </body>
 </html>
