@@ -21,14 +21,14 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@RequestParam("loginname") String username,@RequestParam("password") String password, Model model) {
+    public String login(@RequestParam("username") String username, @RequestParam("password") String password, Model model) {
         try {
             //使用权限工具进行用户登录，登录成功后跳到shiro配置的successUrl中，与下面的return没什么关系！
             SecurityUtils.getSubject().login(new UsernamePasswordToken(username, password));
             return "redirect:/greeting";
         } catch (AuthenticationException e) {
             e.printStackTrace();
-            model.addAttribute("error","用户名密码错误");
+            model.addAttribute("error", "用户名密码错误");
             return "login/login";
         }
     }

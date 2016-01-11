@@ -33,7 +33,7 @@
             }
         %>
         <label for="inputEmail" class="sr-only">用户名</label>
-        <input type="text" id="inputEmail" name="loginname" class="form-control" placeholder="loginname" required
+        <input type="text" id="inputEmail" name="username" class="form-control" placeholder="loginname" required
                autofocus>
         <label for="inputPassword" class="sr-only">密码</label>
         <input type="password" id="inputPassword" name="password" class="form-control" placeholder="password" required>

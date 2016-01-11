@@ -42,6 +42,7 @@ dependencies {
     compile "${springGroup}:spring-webmvc:${springVersion}"
     compile "${springGroup}:spring-orm:${springVersion}"
     compile "${springGroup}:spring-context-support:${springVersion}"
+    compile "${springGroup}:spring-test:${springVersion}"
     compile "${hibernateGroup}:hibernate-core:${hibernateVersion}"
     compile "${hibernateGroup}:hibernate-entitymanager:${hibernateVersion}"
     compile "${hibernateGroup}:hibernate-ehcache:${hibernateVersion}"
