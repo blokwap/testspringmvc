@@ -12,7 +12,7 @@ import javax.persistence.InheritanceType;
  */
 @Entity
 @Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
-public class Permission {
+public class Permission extends BasePojo{
     private String name;
 
     public String getName() {
