@@ -13,6 +13,7 @@ public class User extends BasePojo{
     private String password;
     private List<Role> roles;
 
+    @Column(unique = true)
     public String getUsername() {
         return username;
     }

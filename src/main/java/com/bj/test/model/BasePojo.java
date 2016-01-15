@@ -10,10 +10,9 @@ import java.io.Serializable;
 /**
  * Created by baojun on 2016/1/11.
  */
-@Entity
 @DynamicInsert
 @DynamicUpdate
-@Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
 public class BasePojo implements Serializable {
     public static final int NOT_USED_HASHCODE = Integer.MIN_VALUE;
 
@@ -23,7 +22,7 @@ public class BasePojo implements Serializable {
 
     @Id
     @GeneratedValue(generator = "idGenerator")
-    @GenericGenerator(name = "idGenerator", strategy = "uuid.hex")
+    @GenericGenerator(name = "idGenerator", strategy = "uuid")
     public String getId() {
         return id;
     }

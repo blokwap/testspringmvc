@@ -5,6 +5,7 @@ import com.bj.test.service.BaseServiceI;
 import com.bj.test.util.HqlFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -15,6 +16,7 @@ import java.util.Map;
  * Created by baojun on 2016/1/12.
  */
 @Service
+@Transactional
 public class BaseServiceImpl<T> implements BaseServiceI<T> {
     @Autowired
     private BaseDaoI<T> baseDao;

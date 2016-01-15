@@ -21,7 +21,7 @@ public class Role extends BasePojo{
     }
 
     @ManyToMany
-    @JoinTable(name="t_role_permission",joinColumns={@JoinColumn(name="role_id")},inverseJoinColumns={@JoinColumn(name="permission_id")})
+    @JoinTable(name="role_permission",joinColumns={@JoinColumn(name="role_id")},inverseJoinColumns={@JoinColumn(name="permission_id")})
     public List<Permission> getPermissions() {
         return permissions;
     }

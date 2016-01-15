@@ -37,6 +37,8 @@ ext {
 dependencies {
     //compile 'org.springframework.boot:spring-boot-starter-thymeleaf'
     compile "log4j:log4j:1.2.17"
+    compile "org.slf4j:slf4j-log4j12:1.7.13"
+    compile "org.slf4j:slf4j-api:1.7.13"
     compile "org.apache.shiro:shiro-spring:1.2.4"
     compile "org.apache.shiro:shiro-ehcache:1.2.4"
     compile "${springGroup}:spring-webmvc:${springVersion}"
