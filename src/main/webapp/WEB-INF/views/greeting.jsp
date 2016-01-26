@@ -14,6 +14,14 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-登录成功, <shiro:principal/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h2>登录成功, <shiro:principal/></h2>
+            <h2><a href="/user/list">用户列表</a></h2>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

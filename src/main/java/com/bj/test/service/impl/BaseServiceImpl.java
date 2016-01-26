@@ -66,12 +66,12 @@ public class BaseServiceImpl<T> implements BaseServiceI<T> {
 
     @Override
     public List<T> find() {
-        return null;
+        return findByFilter(new HqlFilter());
     }
 
     @Override
     public List<T> find(int page, int rows) {
-        return null;
+        return findByFilter(new HqlFilter(),page,rows);
     }
 
     @Override

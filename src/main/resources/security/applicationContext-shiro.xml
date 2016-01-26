@@ -20,7 +20,7 @@
         <property name="permissionsLookupEnabled" value="true"/>
         <property name="authenticationQuery" value="select password from user where username =?"/>
 		<property name="userRolesQuery" value="select r.name from role r, user u, user_role ur where r.id = ur.role_id and ur.user_id =u.id and u.username =?"/>
-        <property name="rolePermissionResolver" value="select p.name from permission p, role r, role_permission rp where p.id = rp.permission_id and rp.role_id = r.id and r.name =?,"/>
+        <property name="permissionsQuery" value="select p.name from permission p, role r, role_permission rp where p.id = rp.permission_id and rp.role_id = r.id and r.name =?,"/>
 	</bean>
 	
 	<!-- Shiro Filter -->
