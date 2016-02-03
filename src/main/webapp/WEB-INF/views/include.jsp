@@ -11,3 +11,4 @@
 <script type="text/javascript" src="<%=contextPath%>/static/jquery/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="<%=contextPath%>/static/bootstrap/3.3.5/js/bootstrap.min.js"
         charset="utf-8"></script>
+<script type="text/javascript" src="<%=contextPath%>/static/bootstrap/bootbox.min.js"></script>

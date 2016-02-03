@@ -34,7 +34,6 @@
                 /static/** = anon
 				/login = anon
 				/logout = logout
-				/account/** = user
 				/api/secure/** = authcBasic
                 /** = authc
 			</value>
