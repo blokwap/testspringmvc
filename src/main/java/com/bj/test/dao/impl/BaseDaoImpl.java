@@ -1,6 +1,7 @@
 package com.bj.test.dao.impl;
 
 import com.bj.test.dao.BaseDaoI;
+import com.bj.test.model.BasePojo;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
@@ -18,7 +19,7 @@ import java.util.Map;
  * Created by baojun on 2016/1/12.
  */
 @Repository
-public class BaseDaoImpl<T> implements BaseDaoI<T> {
+public class BaseDaoImpl<T extends BasePojo> implements BaseDaoI<T> {
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -160,7 +161,7 @@ public class BaseDaoImpl<T> implements BaseDaoI<T> {
 
     @Override
     public T getUniqueBySql(String sql, Map<String, Object> params) {
-        Class<T> clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+        Class<BasePojo> clazz = (Class<BasePojo>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         SQLQuery q = getCurrentSession().createSQLQuery(sql);
         if (params != null && !params.isEmpty()) {
             for (String key : params.keySet()) {

@@ -1,5 +1,6 @@
 package com.bj.test.service;
 
+import com.bj.test.model.Permission;
 import com.bj.test.model.User;
 
 /**

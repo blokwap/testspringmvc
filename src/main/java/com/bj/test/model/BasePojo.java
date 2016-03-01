@@ -6,6 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by baojun on 2016/1/11.
@@ -19,7 +20,13 @@ public class BasePojo implements Serializable {
     private int hashCode = NOT_USED_HASHCODE;
 
     private String id;
+    private Date createTime;
 
+    private Date updateTime;
+
+    private User createUser;
+
+    private User updateUser;
     @Id
     @GeneratedValue(generator = "idGenerator")
     @GenericGenerator(name = "idGenerator", strategy = "uuid")
@@ -29,6 +36,42 @@ public class BasePojo implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    @Column
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    @Column
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    @Column
+    public User getCreateUser() {
+        return createUser;
+    }
+
+    public void setCreateUser(User createUser) {
+        this.createUser = createUser;
+    }
+
+    @Column
+    public User getUpdateUser() {
+        return updateUser;
+    }
+
+    public void setUpdateUser(User updateUser) {
+        this.updateUser = updateUser;
     }
 
     public int hashCode() {
