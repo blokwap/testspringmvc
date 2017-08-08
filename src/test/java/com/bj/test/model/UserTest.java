@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
  * Created by baojun on 2016/1/11.
  */
 @Transactional
-@Rollback(true)
+@Rollback(false)
 public class UserTest extends BaseTest {
     @Autowired
     private UserServiceI userService;

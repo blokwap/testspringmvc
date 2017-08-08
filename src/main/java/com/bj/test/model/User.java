@@ -7,6 +7,7 @@ import java.util.List;
  * Created by baojun on 2016/1/11.
  */
 @Entity
+@Table(name="sysuser")
 @Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
 public class User extends BasePojo{
     private String username;

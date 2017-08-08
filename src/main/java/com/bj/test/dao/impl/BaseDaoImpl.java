@@ -2,14 +2,12 @@ package com.bj.test.dao.impl;
 
 import com.bj.test.dao.BaseDaoI;
 import com.bj.test.model.BasePojo;
-import org.hibernate.Query;
-import org.hibernate.SQLQuery;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.transform.Transformers;
+import org.hibernate.query.NativeQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -162,77 +160,77 @@ public class BaseDaoImpl<T extends BasePojo> implements BaseDaoI<T> {
     @Override
     public T getUniqueBySql(String sql, Map<String, Object> params) {
         Class<BasePojo> clazz = (Class<BasePojo>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-        SQLQuery q = getCurrentSession().createSQLQuery(sql);
+        NativeQuery q = getCurrentSession().createNativeQuery(sql);
         if (params != null && !params.isEmpty()) {
             for (String key : params.keySet()) {
                 q.setParameter(key, params.get(key));
             }
         }
-        return (T) q.setResultTransformer(Transformers.aliasToBean(clazz)).uniqueResult();
+        return (T) q.uniqueResult();
     }
 
     @Override
     public T getUniqueBySql(String sql, Object... args) {
         Class<T> clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
-        SQLQuery q = getCurrentSession().createSQLQuery(sql);
+        NativeQuery q = getCurrentSession().createNativeQuery(sql);
         for (int i = 0; i < args.length; i++) {
             q.setParameter(i, args[i]);
         }
-        return (T) q.setResultTransformer(Transformers.aliasToBean(clazz)).uniqueResult();
+        return (T) q.uniqueResult();
     }
 
     @Override
     public <E> List<E> findBySql(String sql, Class<E> clazz) {
-        SQLQuery q = getCurrentSession().createSQLQuery(sql);
-        return q.setResultTransformer(Transformers.aliasToBean(clazz)).list();
+        NativeQuery q = getCurrentSession().createNativeQuery(sql);
+        return q.list();
     }
 
     @Override
     public <E> List<E> findBySql(String sql, Class<E> clazz, int page, int rows) {
-        SQLQuery q = getCurrentSession().createSQLQuery(sql);
-        return q.setFirstResult((page - 1) * rows).setMaxResults(rows).setResultTransformer(Transformers.aliasToBean(clazz)).list();
+        NativeQuery q = getCurrentSession().createNativeQuery(sql);
+        return q.setFirstResult((page - 1) * rows).setMaxResults(rows).list();
     }
 
     @Override
     public <E> List<E> findBySql(String sql, Class<E> clazz, Map<String, Object> params) {
-        SQLQuery q = getCurrentSession().createSQLQuery(sql);
+        NativeQuery q = getCurrentSession().createNativeQuery(sql);
         if (params != null && !params.isEmpty()) {
             for (String key : params.keySet()) {
                 q.setParameter(key, params.get(key));
             }
         }
-        return q.setResultTransformer(Transformers.aliasToBean(clazz)).list();
+        return q.list();
     }
 
     @Override
     public <E> List<E> findBySql(String sql, Class<E> clazz, Object... args) {
-        SQLQuery q = getCurrentSession().createSQLQuery(sql);
+        NativeQuery q = getCurrentSession().createNativeQuery(sql);
         for (int i = 0; i < args.length; i++) {
             q.setParameter(i, args[i]);
         }
-        return q.setResultTransformer(Transformers.aliasToBean(clazz)).list();
+        return q.list();
     }
 
     @Override
     public <E> List<E> findBySql(String sql, Class<E> clazz, Map<String, Object> params, int page, int rows) {
-        SQLQuery q = getCurrentSession().createSQLQuery(sql);
+        NativeQuery q = getCurrentSession().createNativeQuery(sql);
         if (params != null && !params.isEmpty()) {
             for (String key : params.keySet()) {
                 q.setParameter(key, params.get(key));
             }
         }
-        return q.setFirstResult((page - 1) * rows).setMaxResults(rows).setResultTransformer(Transformers.aliasToBean(clazz)).list();
+        return q.setFirstResult((page - 1) * rows).setMaxResults(rows).list();
     }
 
     @Override
     public int executeSql(String sql) {
-        SQLQuery q = getCurrentSession().createSQLQuery(sql);
+        NativeQuery q = getCurrentSession().createNativeQuery(sql);
         return q.executeUpdate();
     }
 
     @Override
     public int executeSql(String sql, Map<String, Object> params) {
-        SQLQuery q = getCurrentSession().createSQLQuery(sql);
+        NativeQuery q = getCurrentSession().createNativeQuery(sql);
         if (params != null && !params.isEmpty()) {
             for (String key : params.keySet()) {
                 q.setParameter(key, params.get(key));
@@ -243,13 +241,13 @@ public class BaseDaoImpl<T extends BasePojo> implements BaseDaoI<T> {
 
     @Override
     public int countBySql(String sql) {
-        SQLQuery q = getCurrentSession().createSQLQuery(sql);
+        NativeQuery q = getCurrentSession().createNativeQuery(sql);
         return ((Long) q.uniqueResult()).intValue();
     }
 
     @Override
     public int countBySql(String sql, Map<String, Object> params) {
-        SQLQuery q = getCurrentSession().createSQLQuery(sql);
+        NativeQuery q = getCurrentSession().createNativeQuery(sql);
         if (params != null && !params.isEmpty()) {
             for (String key : params.keySet()) {
                 q.setParameter(key, params.get(key));

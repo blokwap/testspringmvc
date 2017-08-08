@@ -27,7 +27,7 @@ public class BaseServiceImpl<T extends BasePojo> implements BaseServiceI<T> {
 
     @Override
     public void save(T o) {
-        o.setCreateUser((User) SecurityUtils.getSubject().getPrincipal());
+        //o.setCreateUser((User) SecurityUtils.getSubject().getPrincipal());
         o.setCreateTime(new Date());
         saveOrUpdate(o);
     }
